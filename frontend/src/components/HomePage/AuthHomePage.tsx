@@ -6,7 +6,7 @@ export interface IAuthUserList {
     role: string
     _id: string
     __v: number
-    name?: string
+    name: string
     email?: string
     password?: string
     }

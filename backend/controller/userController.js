@@ -35,6 +35,18 @@ const encryptPassword = await bcrypt.hash(password, 10);
 
   const user = new User(data);
   await user.save();
+
+  const profileData = {
+    user: user?._id,
+    bio: "",
+    profilePicture: "",
+    skills: [],
+    github: "",
+    linkedin: "",
+    portfolioUrl: ""
+  };
+  const profile = new Profile(profileData);
+  await profile.save();
   res.status(201).json({
     message: "User Created",
     user: user,
@@ -85,9 +97,45 @@ async function getUserListController(req, res) {
   });
 }
 
+async function updateMyProfileController(req, res) {
+  const userId = req.user.id; // Assuming user ID is stored in req.user after authentication
+  const { bio, profilePicture, skills, github, linkedin, portfolioUrl } = req.body;
+
+  try {
+    const profile = await Profile.findOneAndUpdate(
+      { user: userId },
+      { bio, profilePicture, skills, github, linkedin, portfolioUrl },
+      { new: true, upsert: true }
+    );
+
+    res.status(200).json({
+      message: "Profile updated successfully",
+      profile,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error updating profile",
+      error: error.message,
+    });
+  }
+}
+
+async function viewMyProfileController(req, res) {
+  const { id } = req.user; // Assuming user ID is stored in req.user after authentication
+
+}
+
+async function viewProfileUserController(req, res) {
+  const {id} = req.params; // Assuming user ID is passed as a URL parameter
+
+}
+
 module.exports = {
   createUserController,
   getUserController,
   loginHandleController,
   getUserListController,
+  updateMyProfileController,
+  viewMyProfileController,
+  viewProfileUserController
 };

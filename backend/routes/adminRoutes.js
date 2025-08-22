@@ -1,21 +1,12 @@
 var express = require("express");
-
 const {
-  createUserController,
-  getUserController,
-  loginHandleController,
-  getUserListController,
-} = require("../controller/userController");
-const validateTokenMiddleware = require("../middleware/AuthMiddleWare");
+  createQuestionSetController,
+} = require("../controller/adminController");
+const validateTokenMiddleware = require("../middleware/AuthMiddleware");
+const { adminOnlyMiddleware } = require("../middleware/RoleMiddleware");
+
 var router = express.Router();
 
-/* GET users listing. */
-router.get("/", getUserController);
-
-router.post("/create", createUserController);
-
-router.post("/login", loginHandleController);
-
-router.get("/list", validateTokenMiddleware, getUserListController);
+router.post("/questionset/create",validateTokenMiddleware,adminOnlyMiddleware,createQuestionSetController);
 
 module.exports = router;

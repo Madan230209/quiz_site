@@ -1,31 +1,85 @@
-nav{
-  background-color: white;
-  width: 100%;
+/* NavBar.css */
+
+/* Basic Navbar Styles */
+nav {
   display: flex;
-  gap: 0.5rem;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 1rem;
-  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.25);
-  padding-left: 200px;
-  padding-right: 200px;
+  justify-content: center;
+  gap: 1.5rem;
+  background: linear-gradient(90deg, #1e293b, #334155);
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-.navlink{
-    align-items: center;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
+
+/* Common link styles */
+.navlink {
+  text-decoration: none;
+  color: #f8fafc;
+  font-size: 1.05rem;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
 }
-nav button{
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 10px;
+
+/* Hover underline animation */
+.navlink::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #38bdf8;
+  transition: width 0.3s ease;
+}
+
+.navlink:hover {
+  color: #38bdf8;
+}
+
+.navlink:hover::after {
+  width: 100%;
+}
+
+/* Active link style */
+.navlink.active {
+  color: #38bdf8;
+}
+
+.navlink.active::after {
+  width: 100%;
+}
+
+/* Logout button */
+button {
+  background: #ef4444;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #dc2626;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  nav {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .navlink {
+    font-size: 0.95rem;
+  }
+
+  button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
 }

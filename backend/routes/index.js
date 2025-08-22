@@ -1,31 +1,22 @@
-var express = require('express');
+var express = require("express");
+const { verifyUserController } = require("../controller/indexController");
+const validateTokenMiddleware = require("../middleware/AuthMiddleware");
+
 var router = express.Router();
 
-
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get("/", function (req, res, next) {
+  res.render("index", { title: "Express" });
 });
 
-/* GET new page. */
-router.get('/testing', function(req, res, next) {
+router.get("/testing", function (req, res, next) {
   res.json({
-    name: "John Wick",
-    age: 35,
+    name: "John Doe",
+    age: 30,
     tech: ["JavaScript", "Node.js", "Express"],
-    isActive: true,
-    address: {
-      street: "123 Main St",
-      city: "New York",
-      zip: "10001"
-    },
-    skills: [
-      { name: "JavaScript", level: "Advanced" },
-      { name: "Node.js", level: "Intermediate" },
-      { name: "Express", level: "Beginner" }
-    ]
-  })
+  });
 });
+
+router.get("/api/verify/me", validateTokenMiddleware, verifyUserController);
 
 module.exports = router;
