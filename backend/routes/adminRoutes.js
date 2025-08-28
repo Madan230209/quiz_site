@@ -2,8 +2,8 @@ var express = require("express");
 const {
   createQuestionSetController,
 } = require("../controller/adminController");
-const validateTokenMiddleware = require("../middleware/AuthMiddleware");
 const { adminOnlyMiddleware } = require("../middleware/RoleMiddleware");
+const { validateTokenMiddleware } = require("../middleware/AuthMiddleware");
 
 var router = express.Router();
 

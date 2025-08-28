@@ -1,4 +1,4 @@
-import '../RegisterForm.css';
+import '../css/RegisterForm.css';
 import axios from "axios";
 import { useState } from "react";
 

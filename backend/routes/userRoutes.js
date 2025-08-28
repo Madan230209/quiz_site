@@ -6,11 +6,11 @@ const {
   loginHandleController,
   getUserListController,
   viewMyProfileController,
-  viewProfileUserController,
-  updateMyProfileController,
+  viewProfileofUserController,
+  updateProfileMeController,
 } = require("../controller/userController");
-const { uploadMiddleware } = require("../middleware/FIleHandlerMiddleware");
-const validateTokenMiddleware = require("../middleware/AuthMiddleware");
+const { uploadMiddleware } = require("../middleware/FileHandleMiddleware");
+const { validateTokenMiddleware } = require("../middleware/AuthMiddleware");
 var router = express.Router();
 
 /* GET users listing. */
@@ -27,7 +27,7 @@ router.put(
   "/profile",
   validateTokenMiddleware,
   uploadMiddleware.single("profileImg"),
-  updateMyProfileController
+  updateProfileMeController
 );
 
 router.get("/profile/me", validateTokenMiddleware, viewMyProfileController);
@@ -35,7 +35,7 @@ router.get(
   "/profile/:id",
   validateTokenMiddleware,
 
-  viewProfileUserController
+  viewProfileofUserController
 );
 
 module.exports = router;

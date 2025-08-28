@@ -1,4 +1,4 @@
-import "../AboutUs.css"
+import "../css/AboutUs.css";
 function AboutUsPage() {
   return (
     <div className="about-container">

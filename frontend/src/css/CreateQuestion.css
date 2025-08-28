@@ -1,0 +1,124 @@
+/* Container */
+.question-set-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form */
+.question-set-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Labels & Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Sections */
+.section-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.questions-section,
+.choices-section {
+  margin-top: 15px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+/* Blocks */
+.question-block,
+.choice-block {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.choice-checkbox {
+  transform: scale(1.3);
+}
+
+/* Buttons */
+.add-btn,
+.remove-btn,
+.submit-btn {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.remove-btn {
+  background: #dc3545;
+}
+
+.add-btn {
+  background: #28a745;
+}
+
+.submit-btn {
+  align-self: flex-start;
+}
+
+.add-btn:hover {
+  background: #218838;
+}
+
+.remove-btn:hover {
+  background: #c82333;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .question-block,
+  .choice-block {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .form-input {
+    width: 100%;
+  }
+}

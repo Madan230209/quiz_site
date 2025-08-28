@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { AuthContext, type IAuthContext } from "../App";
-import "../NavBar.css";
+import "../css/NavBar.css";
 import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const accessToken = localStorage.getItem("accessToken");
-  const {isAuth, setAuthState} = useContext<IAuthContext>(AuthContext);
+  const {isAuth, roleState, setAuthState} = useContext<IAuthContext>(AuthContext);
 
   const LogoutHandler = () => {
     localStorage.removeItem("accessToken");
@@ -24,6 +24,9 @@ function NavBar() {
     <>
       <NavLink className='navlink' to="/profile">Profile</NavLink>
       <NavLink className='navlink' to="/questionset/list">Question Set</NavLink>
+      {roleState === "admin" && (
+            <NavLink className="navlink" to="/admin/questionset/create">Create Question</NavLink>
+          )}
       <button onClick={LogoutHandler}>Logout</button>
     </>): 
     (
@@ -31,6 +34,10 @@ function NavBar() {
       <NavLink className='navlink' to="/login">Login</NavLink>
     </>
     )}
+    {
+      isAuth
+    }
+
     </nav>
   );
 }
